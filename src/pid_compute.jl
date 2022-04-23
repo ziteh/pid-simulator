@@ -1,22 +1,22 @@
-
-function pid_compute(setpoint, input, kp, ki, kd, lsum, lin, max, min)
+function pid_compute(setpoint, input, kp, ki, kd, last_iterm, last_input, max=typemax(Float64), min=typemin(Float64))
   error = setpoint - input
-  i = ki * error + lsum
+  diff = input - last_input
 
-  if i > max
-    i = max
-  elseif i < min
-    i = min
+  iterm = ki * error + last_iterm
+  
+  if iterm > max
+    iterm = max
+  elseif iterm < min
+    iterm = min
   end
 
-  diff = input - lin
-  out = kp * error + i - kd * diff
+  output = kp * error + iterm - kd * diff
 
-  if out > max
-    out = max
-  elseif out < min
-    out = min
+  if output > max
+    output = max
+  elseif output < min
+    output = min
   end
 
-  return (out, i, input)
+  return (output, iterm, input)
 end
