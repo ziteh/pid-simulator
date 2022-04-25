@@ -2,6 +2,8 @@
 
 A simple PID controller simulator.
 
+The PID comput code in the [`pid_compute.jl`](\pid_compute.jl).
+
 ## Usage
 
 1. Start Julia REPL.
@@ -9,37 +11,32 @@ A simple PID controller simulator.
 ```julia-repl
 julia> cd("PATH_TO_THIS_FOLDER")
 ```
-
-3. Activate environment:
-
+3. Check the current working directory:
 ```julia-repl
-julia> ]
-() pkg> activate .
-  Activating environment at 'PATH_OF_ENV'
-(PidSimulator) pkg>
-```
-
-4. Using `PidSimulator` module:
-```julia-repl
-julia> using PidSimulator
+julia> pwd()
+"CURRENT_WORKING_DIR"
 ```
 
 ### Demo
 
-Run `demo()` function:
+Run `pid_demo.jl`:
 ```julia-repl
-julia> demo()
---- PID Simulator Demo --
+julia> include("pid_demo.jl")
+--- PID Simulator Demo ---
 1st config:
-kp: 1.500000, ki: 0.200000, Kd: 0.800000, max: 25.000000, min: -25.000000
-
+kp: 0.400000, ki: 0.900000, Kd: 0.500000, max: 55.000000, min: -55.000000
 2nd config:
-kp: 2.500000, ki: 0.040000, Kd: 0.050000, max: 25.000000, min: -25.000000
+kp: 1.500000, ki: 0.200000, Kd: 0.500000, max: 55.000000, min: -55.000000
+Done!
 ```
 
-![](https://i.imgur.com/sStyDpe.png)
+![](https://i.imgur.com/BWwxOPX.png)
 
 ### Plot
+Include `pid_plot.jl` first:
+```julia-repl
+julia> include("pid_plot.jl")
+```
 
 Run `plot()` function with specified `kp=1.5`, `ki=0.2` and `kd=0.3`:
 ```julia-repl
