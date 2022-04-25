@@ -37,7 +37,7 @@ kp: 1.500000, ki: 0.200000, Kd: 0.800000, max: 25.000000, min: -25.000000
 kp: 2.500000, ki: 0.040000, Kd: 0.050000, max: 25.000000, min: -25.000000
 ```
 
-![](https://imgur.com/VH3tNso.png)
+![](https://i.imgur.com/sStyDpe.png)
 
 ### Plot
 
@@ -51,12 +51,12 @@ Run `plot()` function with specified `kp`, `ki`, `kd` and `max=25`, `min=-25`:
 julia> plot(1.5, 0.2, 0.3, 25, -25)
 ```
 
-Run `plot()` function with specified `kp`, `ki`, `kd`, `max`, `min` and `systemModel`:
+Run `plot()` function with specified `kp`, `ki`, `kd`, `max`, `min` and `system_model`:
 ```julia-repl
-julia> plot(1.5, 0.2, 0.3, 25, -25, systemModel=(i,b)->i+b*0.7+5)
+julia> plot(1.5, 0.2, 0.3, 25, -25, system_model=(i,b)->i+b*0.7+5)
 ```
 
 ## Environment
 
-- julia `v1.6.6 (LTS)` 64-bit
-  - Plots `v1.27.6`
+- Julia `v1.6.6` LTS 64-bit
+  - Plots
