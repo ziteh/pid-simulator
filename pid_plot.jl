@@ -21,5 +21,6 @@ function plot(kp, ki, kd, max=1000.0, min=-1000.0; count=300, interation_time=1.
 
   Plots.display(Plots.plot(p1, p2, layout=(2, 1)))
 
-  println("Done!")
+  println("")
+  print("Done!")
 end
