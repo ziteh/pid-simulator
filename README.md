@@ -2,7 +2,7 @@
 
 A simple PID controller simulator.
 
-The PID comput code in the [`pid_compute.jl`](\pid_compute.jl).
+The PID comput code in the [`pid_compute.jl`](/pid_compute.jl).
 
 ## Usage
 
