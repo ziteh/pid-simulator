@@ -22,7 +22,7 @@ function pid_run(
   setpoint_generator=default_setpoint_generator, system_model=default_system, init_value=nothing, max=typemax(Float64), min=typemin(Float64), bias=0.0)
 
   set_value = map(setpoint_generator, 1:count)
-  actual_value = fill(init_value === nothing ? set_value[1] : init_value, count + 2)
+  actual_value = fill(init_value === nothing ? set_value[1] : init_value, count + 1)
   output = fill(0.0, count)
   i_term = fill(0.0, count + 1)
   error_p = fill(0.0, count + 1)
@@ -31,7 +31,7 @@ function pid_run(
 
     (pid_out, i_term_perv, error_perv) = pid_compute(
       set_value[i],
-      actual_value[i+1],
+      actual_value[i],
       kp, ki, kd,
       i_term[i],
       error_p[i],
@@ -47,9 +47,9 @@ function pid_run(
     # PID control is closed-loop control,
     # so the current output(pid_out) will be used as the parameter
     # for the next input(input[i+2]) 
-    global actual_value[i+2] = system_model(actual_value[i+1], pid_out)
+    global actual_value[i+1] = system_model(actual_value[i], pid_out)
   end
 
-  return (set_value, actual_value[3:count+2], output, i_term[2:count+1])
+  return (set_value, actual_value[2:count+1], output, i_term[2:count+1])
 end
 
