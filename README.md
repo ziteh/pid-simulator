@@ -30,7 +30,7 @@ kp: 1.500000, ki: 0.200000, Kd: 0.500000, max: 55.000000, min: -55.000000
 Done!
 ```
 
-![](https://i.imgur.com/BWwxOPX.png)
+![](/demo.png)
 
 ### Plot
 Include `pid_plot.jl` first:
